@@ -1,4 +1,6 @@
-"""Axios Network Service with Automatic JWT Bearer Token Injection & Refresh Interceptors."""
+/**
+ * Axios Network Service with Automatic JWT Bearer Token Injection & Refresh Interceptors.
+ */
 
 import axios, { InternalAxiosRequestConfig } from 'axios';
 import { useAuthStore, UserProfile } from '../store/authStore';
@@ -26,7 +28,7 @@ export interface UserCreatePayload {
 
 export interface UserLoginPayload {
   username_or_email: string;
-  password: str;
+  password: string;
 }
 
 export const apiClient = axios.create({

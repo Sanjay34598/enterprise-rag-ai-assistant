@@ -108,7 +108,7 @@ export const LoginPage: React.FC = () => {
         </form>
 
         <div className="text-center text-xs text-slate-400">
-          Don't have an account?{' '}
+          {"Don't have an account? "}
           <Link to="/register" className="text-brand-500 font-semibold hover:underline">
             Register Account
           </Link>

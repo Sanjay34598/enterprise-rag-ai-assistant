@@ -37,7 +37,7 @@ async def health_check() -> Any:
 
     if not is_db_healthy:
         return JSONResponse(
-            status_code=status.HTTP_533_SERVICE_UNAVAILABLE if hasattr(status, "HTTP_533_SERVICE_UNAVAILABLE") else status.HTTP_503_SERVICE_UNAVAILABLE,
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             content=response_payload,
         )
 

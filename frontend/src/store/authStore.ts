@@ -1,7 +1,7 @@
-"""Zustand Client Authentication State Store.
-
-Manages user session, JWT Access & Refresh tokens, and LocalStorage persistence.
-"""
+/**
+ * Zustand Client Authentication State Store.
+ * Manages user session, JWT Access & Refresh tokens, and LocalStorage persistence.
+ */
 
 import { create } from 'zustand';
 
@@ -11,7 +11,7 @@ export interface UserProfile {
   username: string;
   full_name?: string | null;
   is_active: boolean;
-  is_superuser: bool;
+  is_superuser: boolean;
   created_at: string;
 }
 
