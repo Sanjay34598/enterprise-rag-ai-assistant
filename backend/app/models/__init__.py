@@ -1,1 +1,5 @@
-"""Models package."""
+"""Models package export."""
+
+from app.models.user import User
+
+__all__ = ["User"]
