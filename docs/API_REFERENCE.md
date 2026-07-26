@@ -4,13 +4,81 @@ Interactive OpenAPI documentation is automatically served by FastAPI when runnin
 
 ---
 
-## Key API Endpoints Overview
+## Authentication API Endpoints (`/api/v1/auth`)
 
-| Endpoint | Method | Description | Auth Required |
-| --- | --- | --- | --- |
-| `/api/v1/health` | GET | System health & DB connection status | No |
-| `/api/v1/auth/register` | POST | Register new user account | No |
-| `/api/v1/auth/login` | POST | User authentication & token issuance | No |
-| `/api/v1/documents/upload` | POST | Upload PDF/DOCX/XLSX for processing | Yes (Bearer JWT) |
-| `/api/v1/documents` | GET | List user documents and status | Yes (Bearer JWT) |
-| `/api/v1/chat/stream` | GET | SSE real-time token stream for RAG prompt | Yes (Bearer JWT) |
+### 1. Register Account
+`POST /api/v1/auth/register`
+- **Request Body**:
+  ```json
+  {
+    "email": "user@organization.com",
+    "username": "johndoe",
+    "password": "SecretPassword123!",
+    "full_name": "John Doe"
+  }
+  ```
+- **Response** (`201 Created`):
+  ```json
+  {
+    "id": "123e4567-e89b-12d3-a456-426614174000",
+    "email": "user@organization.com",
+    "username": "johndoe",
+    "full_name": "John Doe",
+    "is_active": true,
+    "is_superuser": false,
+    "created_at": "2026-07-26T12:00:00Z"
+  }
+  ```
+
+---
+
+### 2. Login & Token Issuance
+`POST /api/v1/auth/login`
+- **Request Body**:
+  ```json
+  {
+    "username_or_email": "johndoe",
+    "password": "SecretPassword123!"
+  }
+  ```
+- **Response** (`200 OK`):
+  ```json
+  {
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6...",
+    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6...",
+    "token_type": "bearer"
+  }
+  ```
+
+---
+
+### 3. Refresh Access Token
+`POST /api/v1/auth/refresh`
+- **Request Body**:
+  ```json
+  {
+    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6..."
+  }
+  ```
+- **Response** (`200 OK`):
+  ```json
+  {
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6...",
+    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6...",
+    "token_type": "bearer"
+  }
+  ```
+
+---
+
+### 4. Fetch Current User Profile
+`GET /api/v1/auth/me`
+- **Headers**: `Authorization: Bearer <access_token>`
+- **Response** (`200 OK`): Returns `UserResponse` JSON object.
+
+---
+
+### 5. User Logout
+`POST /api/v1/auth/logout`
+- **Headers**: `Authorization: Bearer <access_token>`
+- **Response** (`200 OK`): `{"message": "Successfully logged out user johndoe"}`

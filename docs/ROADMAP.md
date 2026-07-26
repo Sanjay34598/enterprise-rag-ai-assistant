@@ -1,26 +1,27 @@
 # Product Delivery Roadmap
 
-## Phase 1: Core MVP (Current Phase)
+## Phase 1: Core MVP & Authentication (Completed Milestone)
 - [x] Project Scaffolding & Clean Architecture Setup
-- [ ] JWT Authentication & User Registration
-- [ ] Multimodal File Parser (PDF, DOCX, XLSX)
-- [ ] Text Splitting & HuggingFace / Ollama Vector Embedding Engine
-- [ ] PostgreSQL + PGVector Storage Integration
-- [ ] LangChain / LangGraph Stateful RAG Pipeline Execution
-- [ ] SSE Real-time Streaming AI Chat Interface
-- [ ] Document & Citation UI Management
+- [x] Runnable Infrastructure Stack (FastAPI, React Vite, PostgreSQL PGVector, Ollama, Docker Compose)
+- [x] User ORM Model, Alembic Migrations & PostgreSQL Indexes
+- [x] Password Hashing (Bcrypt / Argon2id) & JWT Access/Refresh Tokens
+- [x] UserRepository & AuthService Business Domain Logic
+- [x] Authentication REST APIs (`/register`, `/login`, `/refresh`, `/me`, `/logout`)
+- [x] React Auth Store (Zustand), Protected Routes & Axios Token Refresh Interceptors
+- [x] Automated Test Suite for Cryptographic & Auth APIs
 
-## Phase 2: Enterprise Multi-Tenancy & Workspace Scaffolding
-- [ ] Organization & Workspace Isolation
-- [ ] Fine-Grained Role-Based Access Control (RBAC)
-- [ ] Multi-User Permissions & Workspace Switching
+## Phase 2: Document Processing & Vector Ingestion (Next Milestone)
+- [ ] Multimodal File Loaders (PDF, DOCX, XLSX)
+- [ ] Semantic Text Splitting & Hierarchical Chunking
+- [ ] HuggingFace & Ollama Vector Embedding Engine
+- [ ] PGVector Storage & Chunk Metadata Persistence
 
-## Phase 3: Background Compute & High-Throughput Ingestion
-- [ ] Celery + Redis Asynchronous Task Queue integration
-- [ ] OCR Processing for scanned image documents
-- [ ] Document deduplication and metadata indexing
+## Phase 3: RAG Pipeline & Streaming Chat
+- [ ] LangChain & LangGraph Stateful RAG Workflow Engine
+- [ ] Cross-Encoder Reranking & Retrieval Optimization
+- [ ] SSE Real-time Streaming AI Chat UI & Source Citations Drawer
 
-## Phase 4: Production Cloud & Observability
-- [ ] AWS Deployment (EKS, RDS PGVector, ElastiCache Redis, S3)
-- [ ] Prometheus Metrics & Grafana Monitoring Dashboards
-- [ ] OpenTelemetry Distributed Tracing & Audit Logging
+## Phase 4: Enterprise Multi-Tenancy & Cloud Observability
+- [ ] Organization & Workspace Isolation (RBAC)
+- [ ] Celery + Redis Asynchronous Task Workers
+- [ ] AWS Cloud Infrastructure & OpenTelemetry Monitoring
